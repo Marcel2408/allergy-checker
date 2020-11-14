@@ -31,7 +31,7 @@ export class AllergyService {
   // postAllergy (allergy: Allergy): Observable<Allergy> {
   //   return this.http.post<Allergy>(`${this.BASE_URL}/allergy`, JSON.stringify(allergy), this.httpOptions)
   //   .pipe(
-  //     catchError(this.handleError('getUrlFromCloudinary', {}))
+  //     catchError(this.handleError('postAllergy', {}))
   //   )
   // }
 

@@ -47,7 +47,7 @@ exports.getFromClarify = async (req, res) => {
     const { url } = req.body;
     await postToClarify(url,res);
   } catch (error) {
-    console.log("error at controller", error);
+    console.log("error at pic controller", error);
     res.sendStatus(500);
   }
 };

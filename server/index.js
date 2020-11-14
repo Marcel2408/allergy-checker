@@ -4,6 +4,7 @@ const router = require('./router');
 const PORT = 3000;
 const app = express();
 const morgan = require('morgan');
+const db = require('./models/index');
 
 
 app.use(cors());
@@ -12,9 +13,20 @@ app.use(express.json());
 app.use(router);
 
 
-app.listen(PORT, () => {
-  console.log(`server listening on port ${PORT}`);
-})
+(async function bootstrap () {
+  try {
+    await db.sequelize.sync();
+  } catch (error) {
+    console.log('error connecting to db', error);
+  }
+  app.listen(PORT, () => {
+    console.log(`server listening on port ${PORT}`);
+  })
+})();
+
+db.sequelize.authenticate();
+
+
 
 
 /*

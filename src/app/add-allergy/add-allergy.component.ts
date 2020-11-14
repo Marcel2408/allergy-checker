@@ -23,20 +23,16 @@ export class AddAllergyComponent implements OnInit {
 
 
   onSubmit (): void {
-    console.log(this.allergyForm.value);
-
+    const allergy: Allergy = this.allergyForm.value;
     const { invalid } = this.allergyForm;
 
-    // const allergyObject: Allergy = {
-    //   allergy: allergy,
-    // }
 
-    // if (!invalid) {
-    //   this.allergyService.postAllergy(allergy)
-    //     .subscribe((allergy) => {
-    //       this.allergyService.addToAllergies(allergy)
-    //     })
-    // }
+    if (!invalid) {
+      // this.allergyService.postAllergy(allergy)
+      //   .subscribe((allergy) => {
+      //     this.allergyService.addToAllergies(allergy)
+      //   })
+    }
 
   }
 }
