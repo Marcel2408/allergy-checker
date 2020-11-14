@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Allergy } from './allergy';
 
@@ -11,7 +11,9 @@ export class AllergyService {
 
   constructor(private http: HttpClient) { }
 
-  allergies: Allergy[] = []
+  allergies: Allergy[] = [];
+  allergiesChanged = new Subject<void>();
+
 
   private BASE_URL: string = 'http://localhost:3000';
   private handleError<T>(operation = 'operation', result?: T) {
@@ -27,15 +29,23 @@ export class AllergyService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  getAllergiesFromDB (): Observable<Allergy[]> {
+    return this.http.get<Allergy[]>(`${this.BASE_URL}/allergy`)
+    .pipe(
+      catchError(this.handleError('getAllergiesFromDB', []))
+    )
+  }
 
-  // postAllergy (allergy: Allergy): Observable<Allergy> {
-  //   return this.http.post<Allergy>(`${this.BASE_URL}/allergy`, JSON.stringify(allergy), this.httpOptions)
-  //   .pipe(
-  //     catchError(this.handleError('postAllergy', {}))
-  //   )
-  // }
 
-  // addToAllergies (allergy: Allergy):void {
-  //   this.allergies = [this.allergies, ...allergy]
-  // }
+  postAllergy (allergy: Allergy): Observable<Allergy> {
+    return this.http.post<any>(`${this.BASE_URL}/allergy`, JSON.stringify(allergy), this.httpOptions)
+    .pipe(
+      catchError(this.handleError('postAllergy', {}))
+    )
+  }
+
+  addToAllergies (allergies: Allergy[]):void {
+    this.allergies = [...this.allergies, ...allergies];
+    this.allergiesChanged.next(); //emitting event to render allergies
+  }
 }

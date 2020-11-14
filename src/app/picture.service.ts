@@ -3,6 +3,7 @@ import { Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Ingredient } from './ingredient';
+import { Allergy } from './allergy';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PictureService {
   ingredients: Ingredient[] = [];
   ingredientsChanged = new Subject<void>();
 
-  allergies: string[] = [];
+  allergies: Allergy[] = [];
 
   private BASE_URL: string = 'http://localhost:3000';
   private CLOUDINARY_URL: string = 'https://api.cloudinary.com/v1_1/allergy-checker/image/upload';

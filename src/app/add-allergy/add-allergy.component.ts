@@ -28,10 +28,11 @@ export class AddAllergyComponent implements OnInit {
 
 
     if (!invalid) {
-      // this.allergyService.postAllergy(allergy)
-      //   .subscribe((allergy) => {
-      //     this.allergyService.addToAllergies(allergy)
-      //   })
+      this.allergyService.postAllergy(allergy)
+        .subscribe((allergy) => {
+
+          this.allergyService.addToAllergies([allergy])
+        })
     }
 
   }

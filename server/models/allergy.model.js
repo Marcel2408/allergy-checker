@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => sequelize.define('Allergy', {
-  allegy: {
+  allergy: {
     type: DataTypes.STRING,
     allowNull: false
   }

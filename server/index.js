@@ -15,7 +15,7 @@ app.use(router);
 
 (async function bootstrap () {
   try {
-    await db.sequelize.sync();
+    await db.sequelize.sync({force: true});
   } catch (error) {
     console.log('error connecting to db', error);
   }
@@ -29,10 +29,4 @@ db.sequelize.authenticate();
 
 
 
-/*
-POST --> '/pic' = ingredients from Clarifai DONE
 
-POST --> '/allergies' => store alergies to db
-GET --> '/allergies' => get allergies from db
-DELETE --> '/allergies' => delete allergy from db
-*/

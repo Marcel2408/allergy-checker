@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PictureService } from '../picture.service';
 
 @Component({
   selector: 'app-allergies',
@@ -8,9 +7,10 @@ import { PictureService } from '../picture.service';
 })
 export class AllergiesComponent implements OnInit {
 
-  constructor(private apiPicService: PictureService) { }
+  constructor() { }
 
   ngOnInit(): void {
+
   }
 
 

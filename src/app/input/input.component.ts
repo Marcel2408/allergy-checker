@@ -43,9 +43,8 @@ export class InputComponent implements OnInit {
 
     this.apiPicService
       .getUrlFromCloudinary(this.webcamImage.imageAsDataUrl)
-      .subscribe((response) => {
-        const { url } = response;
-        console.log(response);
+      .subscribe((picture) => {
+        const { url } = picture;
 
         console.log('url from Cloudinary', url);
         this.apiPicService

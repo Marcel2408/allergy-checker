@@ -1,4 +1,4 @@
 export interface Allergy {
-  id?: string,
+  id?: number,
   allergy: string,
 }
