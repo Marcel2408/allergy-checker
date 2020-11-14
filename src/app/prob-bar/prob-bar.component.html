@@ -1,0 +1,7 @@
+<div class="bar">
+  <p class="bar_name">{{ingredient.name}} {{ingredient.prob}}%</p>
+  <div class="bar_meter" [ngStyle]="{'width': ingredient.prob+'%', 'background-color': ingredient.prob <= 30 ? 'yellow': ingredient.prob <= 60 ? 'orange' : 'red'}">
+  </div>
+</div>
+
+

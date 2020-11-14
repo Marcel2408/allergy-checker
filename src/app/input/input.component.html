@@ -1,0 +1,35 @@
+<form
+  class="form"
+  (ngSubmit)="onSubmit(form); inputUrl.value = ''"
+  #form="ngForm"
+>
+  <label class="form_label" for="myPic">See if you can eat...</label>
+  <div class="flex form_wrapper">
+    <input
+      #inputUrl
+      type="url"
+      class="form_input"
+      name="picUrl"
+      id="myPic"
+      placeholder="Insert URL..."
+      ngModel
+      required
+    />
+    <button class="form_btn" type="submit">Check</button>
+  </div>
+</form>
+
+<button (click)="onWebcam($event)">Switch webcam</button>
+
+<div *ngIf="isWebcam" class="webcam-container">
+  <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+  <!-- Button Takes Photo -->
+  <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
+  <!-- Snapshot Div where image will be shown -->
+  <div class="snapshot" *ngIf="webcamImage">
+    <h2>Take your image or get another</h2>
+    <img [src]="webcamImage.imageAsDataUrl"/>
+  </div>
+</div>
+
+<app-results *ngIf="isWebcam"></app-results>

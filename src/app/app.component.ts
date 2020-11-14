@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+
+import { Component,OnInit } from '@angular/core';
+
+declare var particlesJS: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'solo-project';
+
+
+
+export class AppComponent implements OnInit {
+
+  constructor(){}
+  ngOnInit(){
+
+    particlesJS.load('particles-js', 'assets/particlesjs-config.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
+  }
+
 }

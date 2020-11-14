@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+}
+
+.container {
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}

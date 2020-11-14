@@ -1,0 +1,27 @@
+<form
+  class="allergy-input"
+  (ngSubmit)="onSubmit(); inputAllergy.value = ''"
+  [formGroup]="allergyForm"
+>
+  <label class="allergy-input_label" for="allergy"
+    >List your allergies here</label
+  >
+  <div class="flex allergy-input_wrapper">
+    <input
+      #inputAllergy
+      type="text"
+      class="allergy-input_input"
+      formControlName="allergy"
+      id="allergy"
+      placeholder="Kinda die if I eat..."
+    />
+    <button class="allergy-input_btn" type="submit">+</button>
+  </div>
+  <span
+    class="allergy-input_invalid-msg"
+    *ngIf="
+      allergyForm.get('allergy').invalid
+      && allergyForm.get('allergy').touched
+    "
+    >Are you sure you don't have any?</span>
+</form>
