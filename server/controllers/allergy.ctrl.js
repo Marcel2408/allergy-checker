@@ -22,3 +22,16 @@ exports.getAll = async (req, res) => {
     res.sendStatus(500);
   }
 }
+
+exports.deleteAllergy = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await db.Allergy.destroy({
+      where: { id: id }
+    })
+    res.sendStatus(204);
+  } catch (error) {
+    console.log("error at allergy controller", error);
+    res.sendStatus(500);
+  }
+}
