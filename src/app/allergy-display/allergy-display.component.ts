@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Allergy } from '../allergy';
 import { AllergyService } from '../allergy.service';
@@ -8,7 +8,7 @@ import { AllergyService } from '../allergy.service';
   templateUrl: './allergy-display.component.html',
   styleUrls: ['./allergy-display.component.scss']
 })
-export class AllergyDisplayComponent implements OnInit {
+export class AllergyDisplayComponent implements OnInit, OnDestroy {
 
   constructor(private allergyService: AllergyService) { }
 
@@ -16,20 +16,29 @@ export class AllergyDisplayComponent implements OnInit {
   subscription: Subscription;
 
   ngOnInit(): void {
-    this.allergyService
-    .getAllergiesFromDB()
-    .subscribe(allergies => {
-      this.allergies = [...allergies];
-      this.allergyService.addToAllergies(allergies);
-    })
+
+    if (this.allergyService.allergies.length === 0) {
+      this.allergyService
+      .getAllergiesFromDB()
+      .subscribe(allergies => {
+        this.allergies = [...allergies];
+        this.allergyService.addToAllergies(allergies);
+      })
+    }
+    else {
+      this.allergies = [...this.allergyService.allergies];
+    }
 
     this.subscription = this.allergyService.allergiesChanged.subscribe(
       () => {
-        this.allergies = [...this.allergyService.allergies]
-        console.log(this.allergies);
+        this.allergies = [...this.allergyService.allergies];
 
       }
     )
+  }
+
+  ngOnDestroy():void {
+    this.subscription.unsubscribe();
   }
 
 }

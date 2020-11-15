@@ -1,10 +1,10 @@
 <form
   class="allergy-input"
-  (ngSubmit)="onSubmit(); inputAllergy.value = ''"
+  (ngSubmit)="onSubmit(); inputAllergy.value = null"
   [formGroup]="allergyForm"
 >
   <label class="allergy-input_label" for="allergy"
-    >List your allergies here</label
+    >List your allergies here:</label
   >
   <div class="flex allergy-input_wrapper">
     <input

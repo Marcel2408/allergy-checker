@@ -1,49 +1,101 @@
-.form {
+
+.input-picture {
+
   margin: 0 auto;
-  width: 85%;
+  min-width: 85%;
   padding: 2.5em 0;
 
-
-  &_wrapper {
-    margin-top: 1em;
-    box-shadow: 4px 4px 8px 0 rgba(0,0,0,.2);
-  }
-
-  &_input {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    overflow: hidden;
-    border: 1px solid transparent;
-    // outline: none;
-    padding: 1rem 1.5rem;
-    font-family: inherit;
-    font-size: inherit;
-
-    flex: 3;
-
-    &.ng-invalid.ng-touched {
-      border: 1px solid red;
-    }
-  }
+  text-align: center;
 
   &_btn {
-    background: #000;
+    margin: 2em 0;
+    background-color: #000;
     color: #fff;
+    padding: 1.5rem 4rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
     border: none;
     cursor: pointer;
-    font-family: inherit;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition: transform .1s;
-    font-size: inherit;
 
-    flex: 1;
+    &:hover {
+      transform: translateY(-3px); /*to mover the element up 3px*/
+      box-shadow: 0 1rem 8px 0 rgba(0, 0, 0, 0.2);
 
-    &:active {
-      transform: scale(0.9);
+      &::after /*after pseudoelemnt only when the .btn is hovered*/ {
+        transform: scaleX(1.4) scaleY(1.6); /*from original size*/
+        opacity: 0; /*to fade out (disappearing after scaling in .4s as set in transition ::after)*/
+      }
+
+    }
+    &,//for applying this rule also on the button tag
+    &:active /*pseudoclass for when the element is clicked*/ {
+        outline: none;/*for the button default outline */
+        transform: translateY(-1px);/*relative to the original state, not the hover,
+        so the result is like going down 2px when clicked*/
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);/*reduces shadow and is less blurry when clicked*/
     }
 
+    &::after/*pseudoclass to create a virtual element behind the .btn element, to create cool anitamions,
+    when we hover out of the element, the ::after virtual element goes back behind the real element*/
+    {
+        content: "";/*ALWAYS NECESSARY property for ::after pseudoclass*/
+        background-color: #000;
+        display: inline-block;/*ALWAYS NECESSARY property for ::after pseudoclass*/
+        height: 100%;/*the pseudo-element is treated like a child of the real element,
+        so 100% will be relative to the 'parent' that is the real element.
+        To make it have the same size as the real element*/
+        width: 100%;/*to make it have the same size as the real element*/
+        border-radius: 10rem;
+        position: absolute;/*to position right behind the parent .btn element*/
+        top: 0;/*to position right behind the parent .btn element*/
+        left: 0;/*to position right behind the parent .btn element*/
+        z-index: -1;/*otherwise it will be in front of the real element, not behind*/
+        transition: all .4s;/*refering to the properties of :hover::after*/
+    }
   }
+}
+
+.webcam,
+.snapshot {
+  // border: 1px solid red;
+  overflow: hidden;
+  border-radius: 100%;
+  width: 35rem;
+  height: 35rem;
+
+  // ? INCLUDE FOR BIGGER SCREENS
+  // width: 48rem;
+  // height: 48rem;
+  max-width: 100%;
+  box-shadow: 0 1rem 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+
+  // ? INCLUDE FOR BIGGER SCREENS
+  // display: flex;
+  // justify-content: center;
+  &_image {
+
+    overflow: hidden;
+
+    // ? DELETE FOR BIGGER SCREENS
+    position: relative;
+    left: -100px;
+    // top: -10px;
+    display: inline-block;
+  }
+}
+
+.snapshot_image {
+  position: relative;
+  left: -150px;
+  // top: -10px;
+  display: inline-block;
 }
 
 

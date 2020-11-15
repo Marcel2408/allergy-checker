@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Allergy } from '../allergy';
+import { AllergyService } from '../allergy.service';
 
 @Component({
   selector: 'app-allergy-item',
@@ -10,9 +11,16 @@ export class AllergyItemComponent implements OnInit {
 
   @Input() allergy:Allergy;
 
-  constructor() { }
+  constructor(private allergyService: AllergyService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteItem(event):void {
+    this.allergyService.deleteAllergy(this.allergy)
+    .subscribe(() => {
+      this.allergyService.filterAllergy(this.allergy.id);
+    })
   }
 
 }

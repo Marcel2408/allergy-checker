@@ -23,17 +23,19 @@ export class AddAllergyComponent implements OnInit {
 
 
   onSubmit (): void {
-    const allergy: Allergy = this.allergyForm.value;
+    const newAllergy: Allergy = this.allergyForm.value;
     const { invalid } = this.allergyForm;
+    const isNewAllergy = this.allergyService.allergies.every(allergy => allergy.allergy !== newAllergy.allergy)
 
+    if (!invalid && isNewAllergy) {
 
-    if (!invalid) {
-      this.allergyService.postAllergy(allergy)
+      this.allergyService.postAllergy(newAllergy)
         .subscribe((allergy) => {
 
           this.allergyService.addToAllergies([allergy])
         })
     }
+
 
   }
 }

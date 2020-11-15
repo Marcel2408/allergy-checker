@@ -44,8 +44,24 @@ export class AllergyService {
     )
   }
 
+  deleteAllergy (allergy: Allergy): Observable<{}> {
+    const { id } = allergy;
+    return this.http.delete(`${this.BASE_URL}/allergy/${id}`, this.httpOptions)
+    .pipe(
+      catchError(this.handleError('deleteAllergy', {}))
+    )
+  }
+
   addToAllergies (allergies: Allergy[]):void {
+
     this.allergies = [...this.allergies, ...allergies];
+    this.allergiesChanged.next(); //emitting event to render allergies
+  }
+
+  filterAllergy (id: number): void {
+    this.allergies = [...this.allergies.filter(allergy => allergy.id !== id)]
+    console.log('line 64', this.allergies);
+
     this.allergiesChanged.next(); //emitting event to render allergies
   }
 }

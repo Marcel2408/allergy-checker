@@ -1,0 +1,54 @@
+.item {
+  border: 2px solid #000;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin: 0.7em;
+  animation: 0.5s linear tilt;
+  transition: all 0.2s;
+
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-0.7rem) scale(1.03);
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    & .item_delete-btn {
+      opacity: 1;
+    }
+  }
+
+  &_name {
+    font-weight: bold;
+  }
+
+  &_delete-btn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    margin-left: 0.5em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    outline: none;
+
+  }
+
+}
+
+@keyframes tilt {
+  100%,
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}

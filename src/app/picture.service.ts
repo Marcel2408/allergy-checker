@@ -46,7 +46,6 @@ export class PictureService {
   }
 
   getIngFromPic (url: {url: string}): Observable<Ingredient[]> {
-    console.log('picservice', url);
 
     return this.http.post<Ingredient[]>(`${this.BASE_URL}/pic`, JSON.stringify(url), this.httpOptions)
     .pipe(
@@ -59,7 +58,6 @@ export class PictureService {
   fillWithIng (ingredients: Ingredient[]):void {
     this.ingredients = [...ingredients];
     this.ingredientsChanged.next(); //emitting event to render ingredients
-    console.log('fillWithIng', this.ingredients);
   }
 
 }
