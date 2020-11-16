@@ -15,8 +15,13 @@ export class PictureService {
 
   allergies: Allergy[] = [];
 
-  private BASE_URL: string = 'http://localhost:3000';
-  private CLOUDINARY_URL: string = 'https://api.cloudinary.com/v1_1/allergy-checker/image/upload';
+  private BASE_URL = 'http://localhost:3000';
+  private CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/allergy-checker/image/upload';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // console.error(error);
@@ -26,23 +31,19 @@ export class PictureService {
     };
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
 
   constructor(private http: HttpClient) { }
 
   getUrlFromCloudinary (dataUrl: string) {
     const picUrl = {
-        'file': dataUrl,
-        'upload_preset': 'solo-project-preset'
-    }
+        file: dataUrl,
+        upload_preset: 'solo-project-preset'
+    };
 
     return this.http.post<any>(this.CLOUDINARY_URL, picUrl)
     .pipe(
       catchError(this.handleError('getUrlFromCloudinary', {}))
-    )
+    );
   }
 
   getIngFromPic (url: {url: string}): Observable<Ingredient[]> {
@@ -50,14 +51,14 @@ export class PictureService {
     return this.http.post<Ingredient[]>(`${this.BASE_URL}/pic`, JSON.stringify(url), this.httpOptions)
     .pipe(
       catchError(this.handleError('getIngFromPic', []))
-    )
+    );
   }
 
 
-  // !ask how to avoid this step
-  fillWithIng (ingredients: Ingredient[]):void {
+  fillWithIng (ingredients: Ingredient[]): void {
+
     this.ingredients = [...ingredients];
-    this.ingredientsChanged.next(); //emitting event to render ingredients
+    this.ingredientsChanged.next(); // emitting event to render ingredients
   }
 
 }

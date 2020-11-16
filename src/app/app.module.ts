@@ -16,6 +16,7 @@ import { ProbBarComponent } from './prob-bar/prob-bar.component';
 import { AddAllergyComponent } from './add-allergy/add-allergy.component';
 import { AllergyDisplayComponent } from './allergy-display/allergy-display.component';
 import { AllergyItemComponent } from './allergy-item/allergy-item.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AllergyItemComponent } from './allergy-item/allergy-item.component';
     AddAllergyComponent,
     AllergyDisplayComponent,
     AllergyItemComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

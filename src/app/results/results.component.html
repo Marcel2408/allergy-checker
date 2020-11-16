@@ -1,5 +1,8 @@
-<div class="results" *ngIf="ingredients">
-  <app-prob-bar *ngFor="let ingredient of ingredients" [ingredient]="ingredient"></app-prob-bar>
+<div class="results">
+  <h2 class="results_safe" *ngIf="isSafe">You are safe, enjoy your meal!</h2>
+  <div class="results_list" *ngIf="ingredients.length">
+    <app-prob-bar *ngFor="let ingredient of ingredients" [ingredient]="ingredient"></app-prob-bar>
+  </div>
 </div>
 
 

@@ -14,6 +14,7 @@ export class AllergyDisplayComponent implements OnInit, OnDestroy {
 
   allergies: Allergy[] = [];
   subscription: Subscription;
+  isNone = false;
 
   ngOnInit(): void {
 
@@ -23,21 +24,26 @@ export class AllergyDisplayComponent implements OnInit, OnDestroy {
       .subscribe(allergies => {
         this.allergies = [...allergies];
         this.allergyService.addToAllergies(allergies);
-      })
+        if (!this.allergies.length) this.isNone = true;
+        else this.isNone = false;
+      });
     }
     else {
       this.allergies = [...this.allergyService.allergies];
+      if (!this.allergies.length) this.isNone = true;
+      else this.isNone = false;
     }
 
     this.subscription = this.allergyService.allergiesChanged.subscribe(
       () => {
         this.allergies = [...this.allergyService.allergies];
-
+        if (!this.allergies.length) this.isNone = true;
+        else this.isNone = false;
       }
-    )
+    );
   }
 
-  ngOnDestroy():void {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 

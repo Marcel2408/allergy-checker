@@ -1,5 +1,29 @@
 .results {
   width: 85%;
   margin: 0 auto;
-  padding: 2.5em 0;
+  padding: 2em;
+  text-align: center;
+
+  &_safe {
+    display: inline-block;
+
+    color: rgb(69, 204, 69);
+    animation: safeEnter .5s ease-in-out;
+  }
+
+}
+
+@keyframes safeEnter {
+  0% {
+    transform: translateX(-5rem);
+    color: #000;
+  }
+  50% {
+    transform: translateX(10rem);
+    color: #000;
+  }
+  100% {
+    transform: translateX(0);
+    color: #000;
+  }
 }

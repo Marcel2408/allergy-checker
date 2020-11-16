@@ -1,5 +1,5 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Allergy } from '../allergy';
 import { AllergyService } from '../allergy.service';
@@ -11,10 +11,10 @@ import { PictureService } from '../picture.service';
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
 })
-export class ResultsComponent implements OnInit, OnDestroy {
+export class ResultsComponent implements OnInit {
   ingredients: Ingredient[] = [];
-  subscription: Subscription;
   allergies: string[] = [];
+  isSafe = false;
 
   constructor(
     private apiPicService: PictureService,
@@ -22,22 +22,17 @@ export class ResultsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-
     this.allergies = this.allergyService.allergies.map(
       (allergy) => allergy.allergy
     );
-    this.subscription = this.apiPicService.ingredientsChanged.subscribe(() => {
-      if (this.allergyService.allergies.length === 0) {
-        this.ingredients = [...this.apiPicService.ingredients];
-      } else {
-        this.ingredients = this.apiPicService.ingredients.filter((ingredient) =>
-          this.allergies.includes(ingredient.name)
-        );
-      }
-    });
+
+    this.ingredients = this.apiPicService.ingredients.filter((ingredient) =>
+      this.allergies.includes(ingredient.name)
+    );
+    if (!this.ingredients.length) {
+      this.isSafe = true;
+    }
+
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe(); //avoids memory leaking
-  }
 }

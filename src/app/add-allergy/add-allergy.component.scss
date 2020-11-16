@@ -1,12 +1,20 @@
 .allergy-input {
   margin: 0 auto;
   width: 85%;
-  padding: 2.5em 0;
+  // padding: 2.5em 0;
+  padding: 2.5rem 0 1rem;
 
 
   &_wrapper {
     margin-top: 1em;
     box-shadow: 4px 4px 8px 0 rgba(0,0,0,.2);
+    border-radius: 5px;
+
+    &--checkbox {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
   }
 
   &_input {
@@ -51,4 +59,18 @@
     font-size: 1.5rem;
     color: red;
   }
+
+  &_checkbox-wrapper {
+    padding: 1rem;
+
+    & label {
+      margin-left: 1rem;
+    }
+
+    & input {
+      cursor: pointer;
+
+    }
+  }
+
 }

@@ -20,8 +20,30 @@
   <span
     class="allergy-input_invalid-msg"
     *ngIf="
-      allergyForm.get('allergy').invalid
-      && allergyForm.get('allergy').touched
+      allergyForm.get('allergy').invalid && allergyForm.get('allergy').touched
     "
-    >Are you sure you don't have any?</span>
+    >Are you sure you don't have any?</span
+  >
 </form>
+
+<div class="allergy-input">
+  <label for="" class="allergy-input_label">Are you...?</label>
+  <div class="allergy-input_wrapper allergy-input_wrapper--checkbox">
+    <div class="allergy-input_checkbox-wrapper">
+      <input (click)="onClick($event)" type="checkbox" id="coeliac" name="coeliac" [checked]="coeliacCheckbox"/>
+      <label for="coeliac">Coeliac</label>
+    </div>
+    <div class="allergy-input_checkbox-wrapper">
+      <input (click)="onClick($event)" type="checkbox" id="vegan" name="vegan" [checked]="veganCheckbox"/>
+      <label for="vegan">Vegan</label>
+    </div>
+    <div class="allergy-input_checkbox-wrapper">
+      <input (click)="onClick($event)" type="checkbox" id="vegeterian" name="vegeterian" [checked]="vegeterianCheckbox"/>
+      <label for="vegeterian">Vegetarian</label>
+    </div>
+    <div class="allergy-input_checkbox-wrapper">
+      <input (click)="onClick($event)" type="checkbox" id="pescatarian" name="pescatarian" [checked]="pescatarianCheckbox"/>
+      <label for="pescatarian">Pescatarian</label>
+    </div>
+  </div>
+</div>

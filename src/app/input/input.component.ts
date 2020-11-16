@@ -12,6 +12,15 @@ import { AllergyService } from '../allergy.service';
 export class InputComponent implements OnInit {
   constructor(private apiPicService: PictureService, private allergyService: AllergyService) {}
 
+  headingText = 'Check your meal';
+  isWebcam = false;
+  isFirstTime = true;
+  isLoading = false;
+  // latest snapshot
+  public webcamImage: WebcamImage = null;
+  // webcam snapshot trigger
+  private trigger: Subject<void> = new Subject<void>();
+
   ngOnInit(): void {
     // to load allergies to allergyService the first time the user enters the app
     if (this.allergyService.allergies.length === 0) {
@@ -21,25 +30,22 @@ export class InputComponent implements OnInit {
     }
   }
 
-  headingText: string = 'Check your meal';
-  isWebcam: boolean = false;
   onWebcam(e): void {
+    this.isFirstTime = false;
     this.isWebcam = !this.isWebcam;
-    if (this.isWebcam) this.headingText = 'No more photos';
-    else this.headingText = 'Check your meal';
+    if (this.isFirstTime) this.headingText = 'Check your meal';
+    else this.headingText = 'Take another snapshot';
   }
-  // latest snapshot
-  public webcamImage: WebcamImage = null;
-  // webcam snapshot trigger
-  private trigger: Subject<void> = new Subject<void>();
 
   triggerSnapshot(): void {
     this.trigger.next();
+    this.isWebcam = !this.isWebcam;
+    this.isLoading = true;
+
   }
 
   handleImage(webcamImage: WebcamImage): void {
     this.webcamImage = webcamImage;
-
     this.apiPicService
       .getUrlFromCloudinary(this.webcamImage.imageAsDataUrl)
       .subscribe((picture) => {
@@ -50,8 +56,10 @@ export class InputComponent implements OnInit {
           .subscribe((ingredients) => {
             this.apiPicService
             .fillWithIng(ingredients);
+
         });
       });
+      setTimeout(() => this.isLoading = false, 1000);
   }
 
   public get triggerObservable(): Observable<void> {

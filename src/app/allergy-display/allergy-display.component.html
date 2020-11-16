@@ -1,3 +1,8 @@
-<div class="allergy-display" *ngIf="allergies">
+<div class="allergy-display" *ngIf="allergies.length">
   <app-allergy-item *ngFor="let allergy of allergies" [allergy]="allergy"></app-allergy-item>
 </div>
+
+
+<h3 *ngIf="isNone" class="allergy-display_none">Hmm... no allergies?</h3>
+
+

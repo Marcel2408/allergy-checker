@@ -1,26 +1,28 @@
-
 <div class="input-picture">
-  <h2 class="input-picture_heading">See if you can eat...</h2>
-  <button class="input-picture_btn" (click)="onWebcam($event)">
-    {{ headingText | uppercase }}
-  </button>
+  <div *ngIf="!isLoading">
+    <h2 class="input-picture_heading">See if you can eat...</h2>
+    <button [ngStyle]="isWebcam && {'display': 'none'}" class="input-picture_btn" (click)="onWebcam($event)">
+      {{ headingText }}
+    </button>
 
-  <div *ngIf="isWebcam" class="webcam">
-    <webcam
-      class="webcam_image"
-      [trigger]="triggerObservable"
-      (imageCapture)="handleImage($event)"
-      [height]=""
-    ></webcam>
-    <!-- Snapshot Div where image will be shown -->
-  </div>
-  <!-- Button Takes Photo -->
-  <!-- todo make it a link to send te user to the results when clicked or hide the webcam when clicked -->
-  <button class="actionBtn input-picture_btn" (click)="triggerSnapshot()" *ngIf="isWebcam">Take A Snapshot</button>
-  <div class="snapshot" *ngIf="webcamImage">
-    <!-- <h2>Take your image or get another</h2> -->
-    <img class="snapshot_image" [src]="webcamImage.imageAsDataUrl" />
+    <div *ngIf="isWebcam" class="webcam">
+      <webcam
+        class="webcam_image"
+        [trigger]="triggerObservable"
+        (imageCapture)="handleImage($event)"
+        [height]=""
+      ></webcam>
+      <!-- Snapshot Div where image will be shown -->
+    </div>
+    <!-- Button Takes Photo -->
+      <div class="snapshot" *ngIf="!isWebcam && webcamImage">
+        <!-- <h2>Take your image or get another</h2> -->
+        <img class="snapshot_image" [src]="webcamImage.imageAsDataUrl" />
+      </div>
+    <button class="actionBtn input-picture_btn" (click)="triggerSnapshot()" *ngIf="isWebcam">Take A Snapshot</button>
   </div>
 </div>
 
-<app-results *ngIf="webcamImage"></app-results>
+<app-loading *ngIf="isLoading"></app-loading>
+<app-results *ngIf="!isWebcam && !isLoading &&!isFirstTime"></app-results>
+

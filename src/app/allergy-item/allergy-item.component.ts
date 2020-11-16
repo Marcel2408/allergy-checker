@@ -9,18 +9,18 @@ import { AllergyService } from '../allergy.service';
 })
 export class AllergyItemComponent implements OnInit {
 
-  @Input() allergy:Allergy;
+  @Input() allergy: Allergy;
 
   constructor(private allergyService: AllergyService) { }
 
   ngOnInit(): void {
   }
 
-  deleteItem(event):void {
+  deleteItem(event): void {
     this.allergyService.deleteAllergy(this.allergy)
     .subscribe(() => {
-      this.allergyService.filterAllergy(this.allergy.id);
-    })
+      this.allergyService.filterAllergy(this.allergy.allergy);
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 declare var particlesJS: any;
 
@@ -14,7 +14,7 @@ declare var particlesJS: any;
 export class AppComponent implements OnInit {
 
   constructor(){}
-  ngOnInit(){
+  ngOnInit(): void{
 
     particlesJS.load('particles-js', 'assets/particlesjs-config.json', function() {
       console.log('callback - particles.js config loaded');

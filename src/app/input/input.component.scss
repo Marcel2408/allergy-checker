@@ -3,7 +3,7 @@
 
   margin: 0 auto;
   min-width: 85%;
-  padding: 2.5em 0;
+  padding-top: 4.5em;
 
   text-align: center;
 
@@ -59,7 +59,12 @@
         transition: all .4s;/*refering to the properties of :hover::after*/
     }
   }
+
+  &_heading {
+    margin-bottom: 2rem;
+  }
 }
+
 
 .webcam,
 .snapshot {
