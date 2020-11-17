@@ -1,13 +1,28 @@
 .results {
   width: 85%;
   margin: 0 auto;
-  padding: 2em;
+  // todo padding: 2em;
+  padding: 1.5em 0;
   text-align: center;
 
   &_safe {
     display: inline-block;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #fff;
+    background-color:  rgb(69, 204, 69);
+    border-radius: 5px;
+    padding: 10px 0;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 33%,
+      /*rgba(0, 0, 0, 0.1) 33%,
+       rgba(0, 0, 0, 0.1) 66% */
+      transparent 66%
+      ),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25));
 
-    color: rgb(69, 204, 69);
     animation: safeEnter .5s ease-in-out;
   }
 
@@ -16,14 +31,11 @@
 @keyframes safeEnter {
   0% {
     transform: translateX(-5rem);
-    color: #000;
   }
   50% {
     transform: translateX(10rem);
-    color: #000;
   }
   100% {
     transform: translateX(0);
-    color: #000;
   }
 }

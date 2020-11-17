@@ -3,8 +3,8 @@
 
   margin: 0 auto;
   min-width: 85%;
-  padding-top: 4.5em;
-
+  // todo padding-top: 4.5em;
+  padding-top: 1em;
   text-align: center;
 
   &_btn {
@@ -12,7 +12,8 @@
     background-color: #000;
     background-image: linear-gradient(90deg, #007CF0,#00dfd8);
     color: #fff;
-    padding: 1.5rem 4rem;
+    // todo padding: 1.5rem 4rem;
+    padding: 1.5rem 3rem;
     text-decoration: none;
     text-transform: uppercase;
     font-size: inherit;
@@ -36,11 +37,11 @@
     }
     &,//for applying this rule also on the button tag
     &:active /*pseudoclass for when the element is clicked*/ {
-        outline: none;/*for the button default outline */
+      outline: none;/*for the button default outline */
         transform: translateY(-1px);/*relative to the original state, not the hover,
         so the result is like going down 2px when clicked*/
         box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);/*reduces shadow and is less blurry when clicked*/
-    }
+      }
 
     &::after/*pseudoclass to create a virtual element behind the .btn element, to create cool anitamions,
     when we hover out of the element, the ::after virtual element goes back behind the real element*/
@@ -59,12 +60,13 @@
         left: 0;/*to position right behind the parent .btn element*/
         z-index: -1;/*otherwise it will be in front of the real element, not behind*/
         transition: all .4s;/*refering to the properties of :hover::after*/
+      }
     }
-  }
 
-  &_heading {
-    margin-bottom: 2rem;
-  }
+    &_heading {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
 }
 
 
@@ -73,11 +75,13 @@
   // border: 1px solid red;
   overflow: hidden;
   border-radius: 100%;
-  width: 35rem;
-  height: 35rem;
+  width: 30rem;
+  height: 30rem;
 
   // ? INCLUDE FOR BIGGER SCREENS
-  // width: 48rem;
+  // width: 35rem;
+  // height: 35rem;
+    // width: 48rem;
   // height: 48rem;
   max-width: 100%;
   box-shadow: 0 1rem 8px rgba(0, 0, 0, 0.2);

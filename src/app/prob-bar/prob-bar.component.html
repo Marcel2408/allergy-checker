@@ -1,6 +1,6 @@
 <div class="bar">
-  <p class="bar_name" [ngStyle]="{'color': ingredient.prob <= 30 ? 'yellow': ingredient.prob <= 60 ? 'orange' : 'red'}">{{ingredient.name}} {{ingredient.prob}}%</p>
-  <div class="bar_meter" [ngStyle]="{'width': ingredient.prob+'%', 'background-color': ingredient.prob <= 30 ? 'yellow': ingredient.prob <= 60 ? 'orange' : 'red'}">
+  <p class="bar_name">{{ingredient.name}} <span [ngStyle]="{'color': ingredient.prob <= 40 ? 'yellow': ingredient.prob <= 70 ? 'orange' : 'red'}">{{ingredient.prob}}%</span></p>
+  <div class="bar_meter" [ngStyle]="{'width': ingredient.prob+'%', 'background-color': ingredient.prob <= 40 ? 'yellow': ingredient.prob <= 70 ? 'orange' : 'red'}">
   </div>
 </div>
 

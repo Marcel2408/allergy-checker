@@ -1,5 +1,5 @@
 .allergy-display {
-  width: 85%;
+  // width: 85%;
   margin: 0 auto;
   padding: 2em 0;
 
@@ -8,7 +8,8 @@
   flex-wrap: wrap;
 
   &_none {
-    margin-top: 8rem;
+    // todo margin-top: 8rem;
+    margin: 3rem 0;
     text-align: center;
   }
 }

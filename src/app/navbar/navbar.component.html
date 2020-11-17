@@ -1,9 +1,33 @@
 <app-loading *ngIf="isLoading"></app-loading>
 
-<nav *ngIf="!isLoading" class="navbar">
-  <a href="#" class="navbar_link" routerLink="/dashboard/can-i-eat" routerLinkActive="active" >Can I eat?</a>
-  <a href="#" class="navbar_link" routerLink="/dashboard/allergies" routerLinkActive="active" >My allergies</a>
-</nav>
-<a routerLink="/login">Sign Out</a>
-<router-outlet></router-outlet>
+<!-- <div class="navbar"> -->
+<!-- <input type="checkbox" class="navbar__checkbox" id="nav-toggle">
+    <label for="nav-toggle" class="navbar__button"><span class="navbar__icon">&nbsp;</span></label> -->
 
+<!-- <div class="navbar__background">&nbsp;</div> -->
+
+<div *ngIf="!isLoading">
+  <div class="signout">
+    <a class="signout_link" routerLink="/login">Sign Out</a>
+  </div>
+
+  <nav class="navbar">
+    <a
+      href="#"
+      class="navbar_link"
+      routerLink="/dashboard/can-i-eat"
+      routerLinkActive="active"
+      >Can I eat?</a
+    >
+
+    <a
+      href="#"
+      class="navbar_link"
+      routerLink="/dashboard/allergies"
+      routerLinkActive="active"
+      >My allergies</a
+    >
+  </nav>
+</div>
+
+<router-outlet></router-outlet>

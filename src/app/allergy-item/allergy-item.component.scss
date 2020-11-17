@@ -1,8 +1,10 @@
 .item {
   border: 2px solid #000;
-  padding: 0.5em 1em;
+  // todo padding: 0.5em 1em;
+  padding: .3em .5em;
   border-radius: 5px;
-  margin: 0.7em;
+  // todo margin: 0.7em;
+  margin: 0.5em;
   animation: 0.5s linear tilt;
   transition: all 0.2s;
 
@@ -29,7 +31,8 @@
     font-size: 1em;
     font-weight: bold;
     margin-left: 0.5em;
-    opacity: 0;
+    // todo opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s;
     outline: none;
 
