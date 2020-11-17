@@ -19,7 +19,6 @@ export class AllergyService {
   private BASE_URL = 'http://localhost:3000';
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // console.error(error);
       console.log('error at allergy service ', error);
 
       return of(result as T);

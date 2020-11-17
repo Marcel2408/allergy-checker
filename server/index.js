@@ -3,13 +3,11 @@ const cors = require('cors');
 const router = require('./router');
 const PORT = 3000;
 const app = express();
-const morgan = require('morgan');
 const db = require('./models/index');
 
 
 app.use(cors());
 app.use(express.json());
-// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(router);
 
 
