@@ -1,5 +1,5 @@
-<div class="input-picture">
-  <div *ngIf="!isLoading">
+<div *ngIf="!isLoading" class="input-picture">
+  <div >
     <h2 class="input-picture_heading">See if you can eat...</h2>
     <button [ngStyle]="isWebcam && {'display': 'none'}" class="input-picture_btn" (click)="onWebcam($event)">
       {{ headingText }}

@@ -29,21 +29,23 @@
 <div class="allergy-input">
   <label for="" class="allergy-input_label">Are you...?</label>
   <div class="allergy-input_wrapper allergy-input_wrapper--checkbox">
+
     <div class="allergy-input_checkbox-wrapper">
       <input (click)="onClick($event)" type="checkbox" id="coeliac" name="coeliac" [checked]="coeliacCheckbox"/>
-      <label for="coeliac">Coeliac</label>
+      <label for="coeliac"><span></span>Coeliac</label>
     </div>
+
     <div class="allergy-input_checkbox-wrapper">
       <input (click)="onClick($event)" type="checkbox" id="vegan" name="vegan" [checked]="veganCheckbox"/>
-      <label for="vegan">Vegan</label>
+      <label for="vegan"><span></span>Vegan</label>
     </div>
     <div class="allergy-input_checkbox-wrapper">
       <input (click)="onClick($event)" type="checkbox" id="vegeterian" name="vegeterian" [checked]="vegeterianCheckbox"/>
-      <label for="vegeterian">Vegetarian</label>
+      <label for="vegeterian"><span></span>Vegetarian</label>
     </div>
     <div class="allergy-input_checkbox-wrapper">
       <input (click)="onClick($event)" type="checkbox" id="pescatarian" name="pescatarian" [checked]="pescatarianCheckbox"/>
-      <label for="pescatarian">Pescatarian</label>
+      <label for="pescatarian"><span></span>Pescatarian</label>
     </div>
   </div>
 </div>

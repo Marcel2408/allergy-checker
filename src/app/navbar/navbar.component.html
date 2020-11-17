@@ -1,5 +1,9 @@
-<nav class="navbar">
-  <a href="#" class="navbar_link" routerLink="can-i-eat" routerLinkActive="active" >Can I eat?</a>
-  <a href="#" class="navbar_link" routerLink="allergies" routerLinkActive="active" >My allergies</a>
+<app-loading *ngIf="isLoading"></app-loading>
+
+<nav *ngIf="!isLoading" class="navbar">
+  <a href="#" class="navbar_link" routerLink="/dashboard/can-i-eat" routerLinkActive="active" >Can I eat?</a>
+  <a href="#" class="navbar_link" routerLink="/dashboard/allergies" routerLinkActive="active" >My allergies</a>
 </nav>
+<a routerLink="/login">Sign Out</a>
+<router-outlet></router-outlet>
 

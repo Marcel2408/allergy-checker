@@ -11,9 +11,9 @@
     border-radius: 5px;
 
     &--checkbox {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      // ? for bigger screen: display: flex;
+      // ? for bigger screen: justify-content: space-between;
+      // ? for bigger screen: flex-wrap: wrap;
     }
   }
 
@@ -36,6 +36,8 @@
 
   &_btn {
     background: #000;
+    background-image: linear-gradient(90deg, #007CF0,#00dfd8);
+
     color: #fff;
     border: none;
     cursor: pointer;
@@ -50,6 +52,8 @@
 
     &:active {
       transform: scale(0.9);
+      outline: none;
+      border: none;
     }
 
   }
@@ -64,13 +68,49 @@
     padding: 1rem;
 
     & label {
-      margin-left: 1rem;
+      padding-left: 4.5rem;
+      position: relative;
+      font-size: 1.6rem;
+      cursor: pointer;
+      // margin-left: 1rem;
+    }
+
+    & span {
+      display: inline-block;/*block or inline-block needed to set box-model properties*/
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;/*to make the element circular*/
+      position: absolute;/*children (like the pseudoelement ::after) set in absolute will work also with this set to absolute
+      equally well as if it was relative*/
+      top: -.7rem;
+      left: 0;
+      border: 5px solid #000;
+
+      &::after {
+        content: "";//needed for the pseudo-element after to work
+        display: block;//needed for the pseudo-element after to work
+        height: 1.3rem;
+        width: 1.3rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000;
+        opacity: 0;/*to be transparent before it gets clicked*/
+        transition: opacity .2s;/*fade-in and out when input radio is checked*/
+      }
+
+    }
+
+    & input:checked + label > span::after {
+      opacity: 1;
+
     }
 
     & input {
-      cursor: pointer;
-
+      display: none;
     }
   }
-
 }
+

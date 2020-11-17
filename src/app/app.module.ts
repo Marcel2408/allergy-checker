@@ -17,6 +17,7 @@ import { AddAllergyComponent } from './add-allergy/add-allergy.component';
 import { AllergyDisplayComponent } from './allergy-display/allergy-display.component';
 import { AllergyItemComponent } from './allergy-item/allergy-item.component';
 import { LoadingComponent } from './loading/loading.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoadingComponent } from './loading/loading.component';
     AllergyDisplayComponent,
     AllergyItemComponent,
     LoadingComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
