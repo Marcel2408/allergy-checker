@@ -1,8 +1,5 @@
 .allergy-input {
   margin: 0 auto;
-  // todo width: 85%;
-  // width: 95%;
-  // padding: 2.5em 0;
   padding: 1rem 0;
 
 
@@ -10,12 +7,6 @@
     margin-top: 1em;
     box-shadow: 4px 4px 8px 0 rgba(0,0,0,.2);
     border-radius: 5px;
-
-    &--checkbox {
-      // ? for bigger screen: display: flex;
-      // ? for bigger screen: justify-content: space-between;
-      // ? for bigger screen: flex-wrap: wrap;
-    }
   }
 
   &_input {
@@ -23,7 +14,6 @@
     border-bottom-left-radius: 5px;
     overflow: hidden;
     border: 1px solid transparent;
-    // outline: none;
     padding: 1rem 1.5rem;
     padding: .8rem .6rem;
     font-family: inherit;
@@ -38,7 +28,6 @@
 
   &_btn {
     background: #000;
-    background-image: linear-gradient(90deg, #007CF0,#00dfd8);
 
     color: #fff;
     border: none;
@@ -117,3 +106,63 @@
 
 }
 
+
+@media (min-width: 350px) {
+  .allergy-input {
+
+    padding: 2rem 0;
+
+    &_input {
+      font-size: 2rem;
+    }
+
+    &_checkbox-wrapper {
+
+      & label {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 750px) {
+  .allergy-input {
+    padding: 4rem 0;
+
+    &_input {
+      font-size: 2.3rem;
+      padding: 1rem 1.5rem;
+    }
+
+    &_checkbox-wrapper {
+
+      & label {
+        font-size: 2.3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+ .allergy-input {
+   &_wrapper {
+
+     &--checkbox {
+       display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+     }
+   }
+
+   &_input {
+    font-size: 2rem;
+  }
+
+  &_checkbox-wrapper {
+
+    & label {
+      font-size: 2rem;
+    }
+  }
+ }
+}

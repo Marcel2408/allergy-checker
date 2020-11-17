@@ -1,18 +1,12 @@
-
 .input-picture {
-
   margin: 0 auto;
-  min-width: 85%;
-  // todo padding-top: 4.5em;
   padding-top: 1em;
   text-align: center;
 
   &_btn {
-    margin: 2em 0;
+    margin: 1.5em 0;
     background-color: #000;
-    background-image: linear-gradient(90deg, #007CF0,#00dfd8);
     color: #fff;
-    // todo padding: 1.5rem 4rem;
     padding: 1.5rem 3rem;
     text-decoration: none;
     text-transform: uppercase;
@@ -33,71 +27,57 @@
         transform: scaleX(1.4) scaleY(1.6); /*from original size*/
         opacity: 0; /*to fade out (disappearing after scaling in .4s as set in transition ::after)*/
       }
-
     }
     &,//for applying this rule also on the button tag
     &:active /*pseudoclass for when the element is clicked*/ {
-      outline: none;/*for the button default outline */
-        transform: translateY(-1px);/*relative to the original state, not the hover,
+      outline: none; /*for the button default outline */
+      transform: translateY(
+        -1px
+      ); /*relative to the original state, not the hover,
         so the result is like going down 2px when clicked*/
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);/*reduces shadow and is less blurry when clicked*/
-      }
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2); /*reduces shadow and is less blurry when clicked*/
+    }
 
     &::after/*pseudoclass to create a virtual element behind the .btn element, to create cool anitamions,
-    when we hover out of the element, the ::after virtual element goes back behind the real element*/
-    {
-        content: "";/*ALWAYS NECESSARY property for ::after pseudoclass*/
-        background-color: #000;
-        background-image: linear-gradient(90deg, #007CF0,#00dfd8);
-        display: inline-block;/*ALWAYS NECESSARY property for ::after pseudoclass*/
-        height: 100%;/*the pseudo-element is treated like a child of the real element,
+    when we hover out of the element, the ::after virtual element goes back behind the real element*/ {
+      content: ""; /*ALWAYS NECESSARY property for ::after pseudoclass*/
+      background-color: #000;
+      display: inline-block; /*ALWAYS NECESSARY property for ::after pseudoclass*/
+      height: 100%; /*the pseudo-element is treated like a child of the real element,
         so 100% will be relative to the 'parent' that is the real element.
         To make it have the same size as the real element*/
-        width: 100%;/*to make it have the same size as the real element*/
-        border-radius: 10rem;
-        position: absolute;/*to position right behind the parent .btn element*/
-        top: 0;/*to position right behind the parent .btn element*/
-        left: 0;/*to position right behind the parent .btn element*/
-        z-index: -1;/*otherwise it will be in front of the real element, not behind*/
-        transition: all .4s;/*refering to the properties of :hover::after*/
-      }
+      width: 100%; /*to make it have the same size as the real element*/
+      border-radius: 10rem;
+      position: absolute; /*to position right behind the parent .btn element*/
+      top: 0; /*to position right behind the parent .btn element*/
+      left: 0; /*to position right behind the parent .btn element*/
+      z-index: -1; /*otherwise it will be in front of the real element, not behind*/
+      transition: all 0.4s; /*refering to the properties of :hover::after*/
     }
+  }
 
-    &_heading {
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-    }
+  &_heading {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
 }
-
 
 .webcam,
 .snapshot {
-  // border: 1px solid red;
   overflow: hidden;
   border-radius: 100%;
   width: 30rem;
   height: 30rem;
 
-  // ? INCLUDE FOR BIGGER SCREENS
-  // width: 35rem;
-  // height: 35rem;
-    // width: 48rem;
-  // height: 48rem;
   max-width: 100%;
   box-shadow: 0 1rem 8px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
 
-  // ? INCLUDE FOR BIGGER SCREENS
-  // display: flex;
-  // justify-content: center;
   &_image {
-
     overflow: hidden;
 
-    // ? DELETE FOR BIGGER SCREENS
     position: relative;
     left: -100px;
-    // top: -10px;
     display: inline-block;
   }
 }
@@ -109,4 +89,38 @@
   display: inline-block;
 }
 
+@media (min-width: 350px) {
+  .input-picture {
+    padding-top: 2em;
+  }
 
+  .webcam,
+  .snapshot {
+    width: 35rem;
+    height: 35rem;
+  }
+}
+
+@media (min-width: 750px) {
+  .input-picture {
+
+    &_btn {
+      padding: 2rem 4rem;
+    }
+  }
+
+  .webcam,
+  .snapshot {
+    width: 48rem;
+    height: 48rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .input-picture {
+
+    &_heading {
+      margin-bottom: 4rem;
+    }
+  }
+}

@@ -1,15 +1,22 @@
 .allergy-display {
-  // width: 85%;
   margin: 0 auto;
   padding: 2em 0;
 
   display: flex;
-  // justify-content: space-between;
   flex-wrap: wrap;
 
   &_none {
-    // todo margin-top: 8rem;
     margin: 3rem 0;
     text-align: center;
+  }
+}
+
+@media (min-width: 900px) {
+  .allergy-display {
+    justify-content: space-evenly;
+
+    &_none {
+      margin: 8rem 0;
+    }
   }
 }

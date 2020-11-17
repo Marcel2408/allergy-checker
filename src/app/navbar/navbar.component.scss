@@ -10,7 +10,6 @@
 .navbar {
   width: 100%;
   margin: 0 auto;
-  // todo padding-bottom: 2.5em;
   padding-bottom: 2em;
 
   display: flex;
@@ -23,7 +22,6 @@
     color: inherit;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 0.6rem 1rem;
-    // todo padding: 0.8rem 1.3rem;
     border-radius: 5px;
     transition: all 0.2s;
     border: 2px solid #fff;
@@ -51,5 +49,27 @@
   background-color: #000;
   color: #fff;
   border: 2px solid #000;
-  // todo border: 2px solid #000;
+}
+
+
+@media (min-width: 350px) {
+  .navbar {
+
+    padding-bottom: 2.5em;
+
+    &_link {
+      padding: .8rem 1.5rem;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .signout {
+    padding: 3rem 0;
+  }
+
+  .active {
+    background-color: transparent;
+    color: #000;
+  }
 }

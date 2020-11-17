@@ -1,7 +1,6 @@
 .results {
   width: 85%;
   margin: 0 auto;
-  // todo padding: 2em;
   padding: 1.5em 0;
   text-align: center;
 
@@ -37,5 +36,33 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@media (min-width: 500px) {
+  .results {
+
+    &_safe {
+      padding: 10px;
+    }
+  }
+}
+
+@media (min-width: 750px) {
+  .results {
+    width: 70%;
+  }
+}
+
+@media (min-width: 900px) {
+  .results {
+    // padding: 2rem 0 4rem 7rem;
+    padding: 2em;
+    padding-bottom: 4em;
+
+    &_safe {
+      display: inline-block;
+      width: 100%;
+    }
   }
 }

@@ -12,7 +12,7 @@
     box-shadow: 0 1rem 8px 0 rgba(0, 0, 0, 0.2);
     padding: 3rem;
     border-radius: 5px;
-    background-image: linear-gradient(90deg, #007CF0,#00dfd8);
+    background-color: #fff;
   }
 
   &_input-wrapper {
@@ -55,5 +55,24 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+
+@media (min-width: 350px) {
+  .signin {
+
+    &_form {
+      padding: 3rem 4rem;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .signin {
+
+    &_form {
+      padding: 5rem 7rem;
+    }
   }
 }
