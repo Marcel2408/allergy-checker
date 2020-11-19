@@ -60,5 +60,5 @@ export class PictureService {
     this.ingredients = [...ingredients];
     this.ingredientsChanged.next(); // emitting event to render ingredients
   }
-
+      
 }
