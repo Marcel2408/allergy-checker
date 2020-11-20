@@ -1,4 +1,6 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -21,5 +23,11 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('when sign out button clicked a user should be redirected to /login page', () => {
+    const singOutButton = fixture.debugElement.nativeElement.querySelector('.signout_link');
+    console.log(singOutButton)
+    expect(singOutButton.textContent).toEqual('Sign Out');
   });
 });
