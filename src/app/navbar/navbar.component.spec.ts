@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import { Router } from '@angular/router';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,7 +10,9 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ NavbarComponent ],
+      providers: [{ provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +26,15 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('isLoading should be true at first', () => {
+    expect(component.isLoading).toBe(true, 'true at first');
+  })
+  it('isLoading should be false after 2s', fakeAsync(() => {
+        let component = new NavbarComponent();
+        expect(component.isLoading).toBe(true)
+        component.ngOnInit()
+        tick(2000)
+        expect(component.isLoading).toBeFalse()
+  }))
 });
