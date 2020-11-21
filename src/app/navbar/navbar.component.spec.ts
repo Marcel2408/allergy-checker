@@ -1,3 +1,7 @@
+
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
@@ -37,6 +41,11 @@ describe('NavbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('when sign out button clicked a user should be redirected to /login page', () => {
+    const singOutButton = fixture.debugElement.nativeElement.querySelector('.signout_link');
+    console.log(singOutButton)
+    expect(singOutButton.textContent).toEqual('Sign Out');
+  });
   it('isLoading should be true at first', () => {
     expect(component.isLoading).toBe(true, 'true at first');
   })
@@ -53,6 +62,4 @@ describe('NavbarComponent', () => {
     const link = fixture.debugElement.query(By.css('.signout_link'));
     tick();
     console.log(link);
-    }))
-
 });
