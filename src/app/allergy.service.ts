@@ -30,6 +30,7 @@ export class AllergyService {
   };
 
   getAllergiesFromDB(): Observable<Allergy[]> {
+    console.log('getAllergiesFromDB called')
     return this.http
       .get<Allergy[]>(`${this.BASE_URL}/allergy`)
       .pipe(catchError(this.handleError('getAllergiesFromDB', [])));

@@ -1,14 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
+import { Observable, Subject } from 'rxjs';
 
 import { AllergyDisplayComponent } from './allergy-display.component';
+import { AllergyService } from '../allergy.service';
+import { AllergyItemComponent } from '../allergy-item/allergy-item.component';
 
 describe('AllergyDisplayComponent', () => {
   let component: AllergyDisplayComponent;
   let fixture: ComponentFixture<AllergyDisplayComponent>;
+  let mockAllergyService;
+  let mockData = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
 
   beforeEach(async () => {
+    mockAllergyService = jasmine.createSpyObj(['getAllergiesFromDB', 'addToAllergies']);
+    mockAllergyService.allergies = []
+    mockAllergyService.allergiesChanged = new Subject<void>();
+    const response = new Observable(sub => sub.next(mockData));
+    mockAllergyService.getAllergiesFromDB.and.returnValue(response);
+
     await TestBed.configureTestingModule({
-      declarations: [ AllergyDisplayComponent ]
+      declarations: [ AllergyDisplayComponent, AllergyItemComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [ { provide: AllergyService, useValue: mockAllergyService } ]
     })
     .compileComponents();
   });
@@ -19,7 +34,14 @@ describe('AllergyDisplayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create an allergy display component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display data correctly', fakeAsync(() => {
+    tick();
+    let newElement = fixture.debugElement.query(By.css('.item'));
+    expect(newElement).toBeTruthy();
+  }));
 });
+
