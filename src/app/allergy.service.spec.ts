@@ -4,11 +4,6 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import { AllergyService } from './allergy.service';
 import { Allergy } from './allergy';
 
-export const mockAllergy: Allergy = {
-  id:4,
-  allergy: 'lemon'
-}
-
 describe('AllergyService', () => {
   let httpTestingController: HttpTestingController;
   let service: AllergyService;
