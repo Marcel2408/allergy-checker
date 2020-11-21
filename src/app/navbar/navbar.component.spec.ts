@@ -1,20 +1,23 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { NavbarComponent } from './navbar.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { routes } from '../app-routing.module';
 import {By} from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { Location } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
-  // let rootElement: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      // providers: [{ provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }],
-      imports: [RouterTestingModule]
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   });
@@ -23,10 +26,9 @@ describe('NavbarComponent', () => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    // rootElement = fixture.debugElement;
-    
+
   });
-  
+
   afterEach(() => {
     fixture = null;
     component = null;
@@ -34,12 +36,6 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('when sign out button clicked a user should be redirected to /login page', () => {
-    const singOutButton = fixture.debugElement.nativeElement.querySelector('.signout_link');
-    console.log(singOutButton)
-    expect(singOutButton.textContent).toEqual('Sign Out');
   });
 
   it('isLoading should be true at first', () => {
@@ -54,12 +50,22 @@ describe('NavbarComponent', () => {
     expect(component.isLoading).toBeFalse()
   }));
 
-  it('Sign Out should redirect to the login path', fakeAsync(() => {
+  it('sign out button should redirect to login page', fakeAsync (inject([Router, Location], (router: Router, location: Location) =>{
     component.isLoading = false;
     fixture.detectChanges();
-    const link = fixture.debugElement.query(By.css('.signout_link'));
+    fixture.debugElement.query(By.css('.signout_link')).nativeElement.click();
     tick();
-    console.log(link);
-}));
+    expect(location.path()).toEqual('/login');
+  })));
+
+  it('can i eat button should redirect to can-i-eat page', fakeAsync (inject([Router, Location], (router: Router, location: Location) =>{
+    component.isLoading = false;
+    fixture.detectChanges();
+    fixture.debugElement.queryAll(By.css('.navbar_link'))[0].nativeElement.click();
+    tick();
+    expect(location.path()).toEqual('/dashboard/can-i-eat');
+  })));
 
 });
+
+

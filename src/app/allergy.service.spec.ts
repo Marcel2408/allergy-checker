@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 import { AllergyService } from './allergy.service';
-import { Allergy } from './allergy';
 
 describe('AllergyService', () => {
   let httpTestingController: HttpTestingController;
@@ -18,11 +17,8 @@ describe('AllergyService', () => {
     service = TestBed.inject(AllergyService);
   });
 
-  afterEach(()=>{
-    httpTestingController.verify();
-  })
-
   it('should be created', () => {
+    const service: AllergyService = TestBed.inject(AllergyService);
     expect(service).toBeTruthy();
   });
 });
