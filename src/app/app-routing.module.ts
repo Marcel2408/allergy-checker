@@ -5,7 +5,7 @@ import { InputComponent } from './input/input.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SigninComponent } from './signin/signin.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: SigninComponent },
   {
