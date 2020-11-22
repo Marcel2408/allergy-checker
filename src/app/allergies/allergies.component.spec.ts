@@ -8,7 +8,7 @@ describe('AllergiesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllergiesComponent ]
+      declarations: [ AllergiesComponent ],
     })
     .compileComponents();
   });
@@ -19,7 +19,7 @@ describe('AllergiesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create allergy component', () => {
     expect(component).toBeTruthy();
   });
 });

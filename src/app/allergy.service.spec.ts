@@ -17,7 +17,7 @@ describe('AllergyService', () => {
     service = TestBed.inject(AllergyService);
   });
 
-  it('should be created', () => {
+  it('should create `AllergyService`', () => {
     const service: AllergyService = TestBed.inject(AllergyService);
     expect(service).toBeTruthy();
   });

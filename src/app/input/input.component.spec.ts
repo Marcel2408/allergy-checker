@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { InputComponent } from './input.component';
 
@@ -8,7 +9,8 @@ describe('InputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputComponent ]
+      declarations: [ InputComponent ],
+      imports: [HttpClientTestingModule],
     })
     .compileComponents();
   });
@@ -19,7 +21,7 @@ describe('InputComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create an input component', () => {
     expect(component).toBeTruthy();
   });
 });

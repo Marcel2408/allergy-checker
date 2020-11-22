@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AddAllergyComponent } from './add-allergy.component';
 
@@ -8,7 +9,8 @@ describe('AddAllergyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddAllergyComponent ]
+      declarations: [ AddAllergyComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });

@@ -19,7 +19,7 @@ describe('LoadingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create a loading component', () => {
     expect(component).toBeTruthy();
   });
 });
