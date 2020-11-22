@@ -11,13 +11,13 @@ describe('AllergyDisplayComponent', () => {
   let component: AllergyDisplayComponent;
   let fixture: ComponentFixture<AllergyDisplayComponent>;
   let mockAllergyService;
-  let mockData = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
+  let mockData;
 
   beforeEach(async () => {
     mockAllergyService = jasmine.createSpyObj(['getAllergiesFromDB', 'addToAllergies']);
     mockAllergyService.allergies = []
     mockAllergyService.allergiesChanged = new Subject<void>();
-    const response = new Observable(sub => sub.next(mockData));
+    let response = new Observable(sub => sub.next(mockData));
     mockAllergyService.getAllergiesFromDB.and.returnValue(response);
 
     await TestBed.configureTestingModule({
@@ -31,17 +31,28 @@ describe('AllergyDisplayComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AllergyDisplayComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create an allergy display component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display data correctly', fakeAsync(() => {
-    tick();
+  it('should display items if some data returned from the database', fakeAsync(() => {
+    mockData = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
+    fixture.detectChanges();
     let newElement = fixture.debugElement.query(By.css('.item'));
     expect(newElement).toBeTruthy();
   }));
+
+  it(`should display 'Hmm... no allergies?' if no data returned from the database`, fakeAsync(() => {
+    mockData = [];
+    fixture.detectChanges();
+    let element = fixture.debugElement.query(By.css('.item'));
+    let newElement = fixture.debugElement.query(By.css('.allergy-display_none'));
+    expect(element).toBeFalsy();
+    expect(newElement).toBeTruthy();
+  }));
+
+
 });
 
