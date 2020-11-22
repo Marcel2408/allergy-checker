@@ -17,9 +17,7 @@ export class AllergyDisplayComponent implements OnInit, OnDestroy {
   isNone = false;
 
   ngOnInit(): void {
-    console.log('on init called')
     if (this.allergyService.allergies.length === 0) {
-      console.log('if condition')
       this.allergyService
       .getAllergiesFromDB()
       .subscribe(allergies => {
