@@ -3,10 +3,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
 
-import { AllergyDisplayComponent } from '../allergy-display/allergy-display.component';
 import { AllergyItemComponent } from './allergy-item.component';
 import { AllergyService } from '../allergy.service';
-import { ComponentRef } from '@angular/core';
 
 
 describe('AllergyItemComponent', () => {

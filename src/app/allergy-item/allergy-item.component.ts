@@ -17,6 +17,7 @@ export class AllergyItemComponent implements OnInit {
   }
 
   deleteItem(event): void {
+    console.log('deleteItem');
     this.allergyService.deleteAllergy(this.allergy)
     .subscribe(() => {
       this.allergyService.filterAllergy(this.allergy.allergy);
