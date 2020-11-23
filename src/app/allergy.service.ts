@@ -46,6 +46,7 @@ export class AllergyService {
   }
 
   deleteAllergy(allergy: Allergy): Observable<{}> {
+    console.log('deleteAllergy');
     const { id } = allergy;
     return this.http
       .delete(`${this.BASE_URL}/allergy/${id}`, this.httpOptions)
@@ -58,6 +59,8 @@ export class AllergyService {
   }
 
   filterAllergy(name: string): void {
+    console.log('deleteAllergy');
+
     this.allergies = [...this.allergies.filter((allergy) => allergy.allergy !== name)];
 
     this.allergiesChanged.next(); // emitting event to render allergies

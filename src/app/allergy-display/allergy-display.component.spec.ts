@@ -16,10 +16,11 @@ describe('AllergyDisplayComponent', () => {
     mockAllergyService = jasmine.createSpyObj(['getAllergiesFromDB', 'addToAllergies', 'deleteAllergy', 'deleteItem', 'filterAllergy']);
     mockAllergyService.allergiesChanged = new Subject<void>();
     let getResponse = new Observable(sub => sub.next(mockAllergyService.allergies));
-    let deleteResponse = new Observable(sub => sub.next(mockAllergyService.allergies = [...mockAllergyService.allergies.filter((allergy) => allergy.allergy !== name)]));
+    let deleteResponse = new Observable(sub => sub.next('ham'));
+    let filterResponse = [];
     mockAllergyService.getAllergiesFromDB.and.returnValue(getResponse);
     mockAllergyService.deleteAllergy.and.returnValue(deleteResponse);
-
+    mockAllergyService.filterAllergy.and.returnValue(filterResponse);
 
     await TestBed.configureTestingModule({
       declarations: [ AllergyDisplayComponent, AllergyItemComponent ],
@@ -34,42 +35,36 @@ describe('AllergyDisplayComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create an allergy display component', () => {
+it('should create an allergy display component', () => {
     expect(component).toBeTruthy();
   });
 
   it('should display items if some data returned from the database', fakeAsync(() => {
-    mockAllergyService.allergies = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
-    fixture.detectChanges();
-    const newElement = fixture.debugElement.query(By.css('.item'));
-    expect(newElement).toBeTruthy();
-  }));
+      mockAllergyService.allergies = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
+      fixture.detectChanges();
+      const newElement = fixture.debugElement.query(By.css('.item'));
+      expect(newElement).toBeTruthy();
+    }));
 
   it(`should display 'Hmm... no allergies?' if no data returned from the database`, fakeAsync(() => {
-    mockAllergyService.allergies = [];
-    fixture.detectChanges();
-    const element = fixture.debugElement.query(By.css('.item'));
-    const newElement = fixture.debugElement.query(By.css('.allergy-display_none'));
-    expect(element).toBeFalsy();
-    expect(newElement).toBeTruthy();
-  }));
+      mockAllergyService.allergies = [];
+      fixture.detectChanges();
+      const element = fixture.debugElement.query(By.css('.item'));
+      const newElement = fixture.debugElement.query(By.css('.allergy-display_none'));
+      expect(element).toBeFalsy();
+      expect(newElement).toBeTruthy();
+    }));
 
-  it('should delete an item when item delete button clicked', fakeAsync(() => {
-    mockAllergyService.allergies = [{id: 1, allergy: 'ham'}, {id: 2, allergy: 'potato'},{id: 3, allergy: 'lemon'}];
+  it('should call deleteAllergy and filterAllergy functions ', fakeAsync(() => {
+    mockAllergyService.allergies = [{id: 1, allergy: 'ham'}];
     fixture.detectChanges();
-    const childInstance = fixture.debugElement.query(By.css('.item')).componentInstance;
-    spyOn(childInstance, 'deleteItem');
-    const element = fixture.debugElement.query(By.css('.item'));
+    let element = fixture.debugElement.query(By.css('.item'));
     const button = element.query(By.css('button')).nativeElement;
     button.click();
-    childInstance.deleteItem();
-    tick();
-    console.log("🚀 ~ file: allergy-display.component.spec.ts ~ line 76 ~ it ~ mockAllergyService.allergies", mockAllergyService.allergies)
     fixture.detectChanges();
-    console.log("🚀 ~ file: allergy-display.component.spec.ts ~ line 60 ~ it ~ button", button)
-
+    expect(mockAllergyService.deleteAllergy).toHaveBeenCalled();
+    expect(mockAllergyService.filterAllergy).toHaveBeenCalled();
   }));
-
-
 });
+
 
