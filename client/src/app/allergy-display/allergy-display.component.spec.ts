@@ -35,7 +35,7 @@ describe('AllergyDisplayComponent', () => {
     component = fixture.componentInstance;
   });
 
-it('should create an allergy display component', () => {
+  it('should create an allergy display component', () => {
     expect(component).toBeTruthy();
   });
 
@@ -63,7 +63,9 @@ it('should create an allergy display component', () => {
     button.click();
     fixture.detectChanges();
     expect(mockAllergyService.deleteAllergy).toHaveBeenCalled();
+    expect(mockAllergyService.deleteAllergy).toHaveBeenCalledWith({id: 1, allergy: 'ham'});
     expect(mockAllergyService.filterAllergy).toHaveBeenCalled();
+    expect(mockAllergyService.filterAllergy).toHaveBeenCalledWith("ham");
   }));
 });
 
