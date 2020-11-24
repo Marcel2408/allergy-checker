@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 import { ResultsComponent } from './results.component';
 
@@ -24,4 +25,9 @@ describe('ResultsComponent', () => {
   it('should create `results component`', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render results div in the DOM', () =>{
+    const resultsEl = fixture.debugElement.query(By.css('.results'));
+    expect(resultsEl).toBeTruthy();
+  })
 });
