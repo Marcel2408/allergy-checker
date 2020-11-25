@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const picController = require('./controllers/pics.cntrl');
+const picController = require('./controllers/pics.ctrl');
 const allergyController = require('./controllers/allergy.ctrl');
 
 
