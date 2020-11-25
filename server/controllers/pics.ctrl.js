@@ -1,4 +1,4 @@
-const  postToClarify  = require('./utilities.ctrl')
+const  { postToClarify }  = require('./utilities.ctrl')
 
 exports.getFromClarify = async (req, res) => {
   try {

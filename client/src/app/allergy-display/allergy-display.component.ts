@@ -21,7 +21,6 @@ export class AllergyDisplayComponent implements OnInit, OnDestroy {
       this.allergyService
       .getAllergiesFromDB()
       .subscribe(allergies => {
-        console.log({allergies})
         this.allergies = [...allergies];
         this.allergyService.addToAllergies(allergies);
         if (!this.allergies.length) this.isNone = true;

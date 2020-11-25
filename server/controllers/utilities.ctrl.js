@@ -24,7 +24,7 @@ exports.postToClarify = async (imageUrl, res) => {
       }
       if (err) {
         console.log("Error: " + err);
-        return reject(`Error: ${err}`);
+        reject(`Error: ${err}`);
       }
       const ingredients = [];
       for (const c of response.outputs[0].data.concepts) {
