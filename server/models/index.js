@@ -4,11 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const { DB_USERNAME, DB_PASSWORD } = require('../config');
+const { DB_USERNAME, DB_PASSWORD, DB_TEST_NAME } = require('../config');
 const db = {};
+const DB_NAME = process.env.NODE_ENV === 'test' ? DB_TEST_NAME : 'allergy_checker'
 
 
-const sequelize = new Sequelize('allergy_checker', DB_USERNAME, DB_PASSWORD, {dialect: "postgres"});
+const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {dialect: "postgres"});
 
 
 fs
