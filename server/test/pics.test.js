@@ -1,4 +1,7 @@
-const getFromClarify = require('../controllers/pics.ctrl');
+let { getFromClarify }  = require('../controllers/pics.ctrl');
+let  { postToClarify } = require('../controllers/utilities.ctrl');
+
+jest.mock('../controllers/utilities.ctrl');
 
 describe('Pics controller unit test', () => {
   const mockUrl = 'http://hello.flowers.com';
@@ -10,12 +13,21 @@ describe('Pics controller unit test', () => {
   }
   describe('getFromClarify', () => {
     req.body = mockUrl;
-    let postToClarify = jest.fn();
-    postToClarify.mockResolvedValue('Bananarama');
 
-    test('getFromClarify should call postToClarify', async () => {
-      await getFromClarify(req, res);
-      expect(postToClarify).toHaveBeenCalled();
-    })
-  })
-})
+    test('should call postToClarify function once', async () => {
+      const postSpy = jest.fn();
+      postToClarify.mockImplementation(() => postSpy());
+      getFromClarify(req, res)
+      expect(postSpy).toHaveBeenCalledTimes(1);
+    });
+
+    test('should call res.send and set correct status', async () => {
+      const postSpy = jest.fn();
+      postToClarify.mockImplementation(() => postSpy());
+      getFromClarify(req, res);
+      expect(res.status).toHaveBeenCalledWith(200);
+    });
+
+  });
+
+});
