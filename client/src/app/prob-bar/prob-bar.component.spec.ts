@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 import { ProbBarComponent } from './prob-bar.component';
 
@@ -22,7 +23,12 @@ describe('ProbBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create prob-bar component', () => {
+  it('should create a prob-bar component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display ingredient name and probability percentage in a <p> tag', () => {
+    const name = fixture.debugElement.query(By.css('.bar_name')).nativeElement.textContent;
+    expect(name).toEqual(`${component.ingredient.name} ${component.ingredient.prob}%`);
   });
 });

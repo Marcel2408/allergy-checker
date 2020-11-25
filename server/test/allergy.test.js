@@ -1,6 +1,5 @@
 const {Allergy} = require('../models');
-// const app = require ('../index')
-const {postAllergy, postMany, getAll, deleteAllergy} = require('../controllers/allergy.ctrl');
+const { postAllergy, postMany, getAll, deleteAllergy } = require('../controllers/allergy.ctrl');
 
 jest.mock('../models', () =>({ Allergy: () =>{}}));
 
@@ -11,7 +10,7 @@ const mockAllergy = {
   }
 }
 
-const mockAllergyGroup = [{allergy: 'Bacon'}, {allergy: 'Egg'}, {allergy:'Potatoe'}]
+const mockAllergyGroup = [{allergy: 'Bacon'}, {allergy: 'Egg'}, {allergy:'Potato'}]
 
 const mockDelete = {
   allergy: {
@@ -66,8 +65,8 @@ describe('Allergy controller unit test', () => {
     })
   })
   describe('postMany', () => {
-    req.body = ['Bacon', 'Egg', 'Potatoe'];
-  
+    req.body = ['Bacon', 'Egg', 'Potato'];
+
     Allergy.bulkCreate = jest.fn();
     Allergy.bulkCreate.mockResolvedValue(mockAllergyGroup);
 

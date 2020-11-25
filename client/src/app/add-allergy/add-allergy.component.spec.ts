@@ -3,6 +3,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 
 import { AddAllergyComponent } from './add-allergy.component';
+import { AllergyDisplayComponent } from '../allergy-display/allergy-display.component';
+import { AllergyService } from '../allergy.service';
 
 describe('AddAllergyComponent', () => {
   let component: AddAllergyComponent;
@@ -10,8 +12,9 @@ describe('AddAllergyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddAllergyComponent ],
-      imports: [HttpClientTestingModule]
+      declarations: [ AddAllergyComponent, AllergyDisplayComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [AllergyService]
     })
     .compileComponents();
   });

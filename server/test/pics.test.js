@@ -1,10 +1,7 @@
-const getFromClarify = require('../controllers/pics.cntrl');
-
-jest.mock('../controllers/pics.cntrl', () => {});
-
-const mockUrl = 'http://hello.flowers.com';
+const getFromClarify = require('../controllers/pics.ctrl');
 
 describe('Pics controller unit test', () => {
+  const mockUrl = 'http://hello.flowers.com';
   const req = {};
   const res = {
     send: jest.fn(() => res).mockName('send'),
@@ -16,7 +13,7 @@ describe('Pics controller unit test', () => {
     let postToClarify = jest.fn();
     postToClarify.mockResolvedValue('Bananarama');
 
-    test('getFromClarify should return Bananarama', async () => {
+    test('getFromClarify should call postToClarify', async () => {
       await getFromClarify(req, res);
       expect(postToClarify).toHaveBeenCalled();
     })

@@ -14,10 +14,8 @@ exports.postAllergy = async (req, res) => {
 
 exports.postMany = async (req, res) => {
   try {
-    console.log('body',req.body);
     const allergyGroup = req.body;
     const allergyTypedGroup = allergyGroup.map(allergy => ({allergy: allergy}));
-    console.log(allergyTypedGroup);
     const postedAllergies = await db.Allergy.bulkCreate(allergyTypedGroup);
     res.status(201);
     res.send(postedAllergies);
@@ -40,7 +38,6 @@ exports.getAll = async (req, res) => {
 
 exports.deleteAllergy = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
     await db.Allergy.destroy({
       where: { id: id }
