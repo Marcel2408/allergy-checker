@@ -13,10 +13,3 @@ router.delete('/allergy/:id', allergyController.deleteAllergy);
 
 module.exports = router;
 
-/*
-POST --> '/pic' = ingredients from Clarifai DONE
-
-POST --> '/allergies' => store alergies to db DONE
-GET --> '/allergies' => get allergies from db DONE
-DELETE --> '/allergies' => delete allergy from db DONE
-*/

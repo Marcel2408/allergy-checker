@@ -1,15 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const router = require('./router');
-const PORT = 3000;
-const app = express();
+const app = require('./app');
 const db = require('./models/index');
 
-
-app.use(cors());
-app.use(express.json());
-app.use(router);
-
+const PORT = 3000;
 
 (async function bootstrap () {
   try {
@@ -23,6 +15,8 @@ app.use(router);
 })();
 
 db.sequelize.authenticate();
+
+module.exports = db;
 
 
 

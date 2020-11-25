@@ -1,46 +1,49 @@
 const db = require('../models');
-const app = require('../index');
+
+let allergies;
 
 const mockAllergy =  {
-  allergy: {
-    type: 'Asparagus',
-    allowNull: false
-  }
+  allergy: 'Asparagus'
 };
 
 const mockAllergies = [
   {
-    type: 'Bacon',
-    allowNull: false
+    allergy: 'Bacon'
   },
   {
-    type: 'Egg',
-    allowNull: false
+    allergy: 'Egg'
   },
   {
-    type: 'Potato',
-    allowNull: false
+    allergy: 'Potato'
   },
   {
-    type: 'Milk',
-    allowNull: false
+    allergy: 'Milk'
   }
 ];
 
 
 beforeAll(async() => {
   await db.sequelize.sync({ force: true });
-  await db.allergies.createBulk(mockAllergies);
+  await db.Allergy.bulkCreate(mockAllergies);
 });
 
-// afterEach(async() => {
-//   await db.sequelize.drop();
-//   await db.sequelize.close();
-// });
+afterAll(async() => {
+    await db.sequelize.drop();
+    await db.sequelize.close();
+});
 
 describe('Database and model test', () => {
-  test('Get a list of allergies from the db', async () => {
-    const allergies = await db.allergies.findAll();
-    console.log(allergies);
+  test('should get a list of allergies from the db', async() => {
+    allergies = await db.Allergy.findAll();
+    expect(allergies.length).toEqual(4);
   });
+
+  test('should delete an item from the list of allergies', async() => {
+    allergies = await db.Allergy.findAll();
+    expect(allergies.length).toEqual(4);
+    await db.Allergy.destroy({where: {allergy: 'Egg'}});
+    allergies = await db.Allergy.findAll();
+    expect(allergies.length).toEqual(3);
+  });
+
 });
