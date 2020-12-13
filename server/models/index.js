@@ -9,7 +9,7 @@ const db = {};
 const DB_NAME = process.env.NODE_ENV === 'test' ? DB_TEST_NAME : 'allergy_checker'
 
 
-const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {dialect: "postgres"});
+const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {dialect: "postgres", logging: false});
 
 
 fs
