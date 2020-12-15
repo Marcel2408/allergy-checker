@@ -1,27 +1,14 @@
-# SoloProject
+## Description
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
+The project consists of implementing a full testing suite of the full-stack allergy-checker app, that allows you to quickly take a picture of some food and see if it contains any of your allergies.
 
-## Development server
+Implementation of Angular unit and integration testing, with the use of Jasmine and Karma as well as backend testing with Jest and Supertest.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Original repo of the app: [original repo of allergy-checker app](https://github.com/Marcel2408/allergy-checker).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Developers
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Ewa Rasala - [Github](https://github.com/ewaras) - [LinkedIn](https://www.linkedin.com/in/ewa-rasala)
+- Charles-Thibault Verrier - [Github](https://github.com/chthve) - [LinkedIn](https://www.linkedin.com/in/chthve/)
+- Marcel Subirana - [Github](https://github.com/marcel2408) - [LinkedIn](https://www.linkedin.com/in/marcel-subirana-campanera/)
