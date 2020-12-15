@@ -4,12 +4,25 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const { DB_USERNAME, DB_PASSWORD, DB_TEST_NAME } = require('../config');
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_TEST_NAME = process.env.DB_TEST_NAME;
 const db = {};
-const DB_NAME = process.env.NODE_ENV === 'test' ? DB_TEST_NAME : 'allergy_checker'
+const DB_NAME = process.env.NODE_ENV === 'test' ? DB_TEST_NAME : 'allergy_checker';
+console.log('username ' +  process.env.DB_USERNAME, 'password ' + process.env.DB_PASSWORD);
 
-
-const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {dialect: "postgres", logging: false});
+const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
+  host: 'localhost',
+  dialect: 'postgres',
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+});
 
 
 fs

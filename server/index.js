@@ -1,6 +1,5 @@
 const app = require('./app');
 const db = require('./models/index');
-
 const PORT = 3000;
 
 (async function bootstrap () {

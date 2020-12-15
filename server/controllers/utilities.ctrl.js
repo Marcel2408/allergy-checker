@@ -1,7 +1,8 @@
 const { ClarifaiStub } = require("clarifai-nodejs-grpc");
 const grpc = require("@grpc/grpc-js");
 
-const { FOOD_MODEL_ID, API_KEY } = require("../config");
+const FOOD_MODEL_ID = process.env.FOOD_MODEL_ID;
+const API_KEY = process.env.API_KEY;
 
 const metadata = new grpc.Metadata();
 metadata.set("authorization", API_KEY);
