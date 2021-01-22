@@ -11,10 +11,10 @@ Please follows this steps if you would like to start the project:
 1) Clone the repo.
 2) Register to [Clarifai](https://www.clarifai.com/) to get your API KEY.
 3) Create a Postgres DB named ```allergy_checker```.
-2) ```cd client && npm install```
-3) Run ```ng serve``` from the client repository.
-4) ```cd server && npm install```
-5) In the server repository create a ```config.js``` file with these variables:
+4) ```cd client && npm install```
+5) Run ```ng serve``` from the client repository.
+6) ```cd server && npm install```
+7) In the server repository create a ```config.js``` file with these variables:
 ```
 module.exports = {
   FOOD_MODEL_ID: "<FOOD_MODEL_ID",
@@ -24,7 +24,7 @@ module.exports = {
   DB_TEST_NAME: "<DB_TEST_NAME>"
 }
 ```
-6) Run ```npm start``` from the server repository.
+8) Run ```npm start``` from the server repository.
 
 You just have now to take photos, enjoy ! 🍕
 
