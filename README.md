@@ -1,6 +1,6 @@
 ## Description
 
-`Can I Eat` is a project dedicated to help you stay safe while exploring 🌍 new food. After creating your account you can simply select your list of allergies 🥜, take a photo of your meal, send it to the amazing [Clarifai](https://www.clarifai.com/) AI 🤖, and within seconds, receive the probabilites of any allergy traces in your dish ⚠️.
+`Can I Eat` is a project dedicated to help you stay safe while exploring 🌍 new food. After creating your account you can simply select your list of allergies 🥜, take a photo of your meal, send it to the amazing [Clarifai](https://www.clarifai.com/) AI 🤖, and within seconds receive the probabilites of any allergy traces in your dish ⚠️.
 
 On the developer side, the app has been fully tested with unit and integration testing, with the use of Jasmine and Karma as well as backend testing with Jest and Supertest, providing a robust development of the app.
 
