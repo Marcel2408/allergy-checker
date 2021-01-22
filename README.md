@@ -24,7 +24,7 @@ module.exports = {
   DB_TEST_NAME: "<DB_TEST_NAME>"
 }
 ```
-6) Run ```npm start``` from the serve repository.
+6) Run ```npm start``` from the server repository.
 
 You just have now to take photos, enjoy ! 🍕
 
@@ -51,7 +51,7 @@ You just have now to take photos, enjoy ! 🍕
 * [Jasmine](https://jasmine.github.io/pages/getting_started.html)
 * [Karma](https://karma-runner.github.io/latest/index.html)
 * [Jest](https://jestjs.io/)
-* [supertest](https://www.npmjs.com/package/supertest)
+* [Supertest](https://www.npmjs.com/package/supertest)
 
 ## Developers
 
